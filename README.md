@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="images/icon.png" alt="Algorithm icon">
+  <img src="images/cloud.png" alt="Algorithm icon">
   <h1 align="center">infer_vision_ai_face_detection</h1>
 </div>
 <br />
@@ -19,10 +19,13 @@
     </a> 
 </p>
 
-[Put algorithm description here]
 
-[Insert illustrative image here. Image must be accessible publicly, in algorithm Github repository for example.
-<img src="images/illustration.png"  alt="Illustrative image" width="30%" height="30%">]
+Face detection using Google cloud vision API. 
+
+**A Google Cloud Vision API Key is required to run this algorithm (see Advanced usage section).**
+
+![Face detection landmarks](https://raw.githubusercontent.com/Ikomia-hub/infer_vision_ai_face_detection/main/images/output.jpg)
+
 
 ## :rocket: Use with Ikomia API
 
@@ -36,7 +39,6 @@ pip install ikomia
 
 #### 2. Create your workflow
 
-[Change the sample image URL to fit algorithm purpose]
 
 ```python
 import ikomia
@@ -50,6 +52,14 @@ algo = wf.add_task(name="infer_vision_ai_face_detection", auto_connect=True)
 
 # Run on your image  
 wf.run_on(url="example_image.png")
+
+# Set parameters
+algo.set_parameters({
+    'google_application_credentials':'PATH/TO/YOUR/GOOGLE/CLOUD/VISION/API/KEY.json '
+})
+
+# Run on your image
+wf.run_on(url='https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')
 ```
 
 ## :sunny: Use with Ikomia Studio
@@ -62,30 +72,9 @@ Ikomia Studio offers a friendly UI with the same features as the API.
 
 ## :pencil: Set algorithm parameters
 
-[Explain each algorithm parameters]
+- **conf_thres** (float) default '0.3': Box threshold for the prediction [0,1]
 
-[Change the sample image URL to fit algorithm purpose]
 
-```python
-import ikomia
-from ikomia.dataprocess.workflow import Workflow
-
-# Init your workflow
-wf = Workflow()
-
-# Add algorithm
-algo = wf.add_task(name="infer_vision_ai_face_detection", auto_connect=True)
-
-algo.set_parameters({
-    "param1": "value1",
-    "param2": "value2",
-    ...
-})
-
-# Run on your image  
-wf.run_on(url="example_image.png")
-
-```
 
 ## :mag: Explore algorithm outputs
 
@@ -101,11 +90,16 @@ wf = Workflow()
 # Add algorithm
 algo = wf.add_task(name="infer_vision_ai_face_detection", auto_connect=True)
 
-# Run on your image  
-wf.run_on(url="example_image.png")
+# Set parameters
+algo.set_parameters({
+    'google_application_credentials':'PATH/TO/YOUR/GOOGLE/CLOUD/VISION/API/KEY.json '
+})
+
+# Run on your image
+wf.run_on(url='https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'))
 
 # Iterate over outputs
-for output in algo.get_outputs()
+for output in algo.get_outputs():
     # Print information
     print(output)
     # Export it to JSON
@@ -114,4 +108,7 @@ for output in algo.get_outputs()
 
 ## :fast_forward: Advanced usage 
 
-[optional]
+#### How to generate a Google Cloud Vision API Key?
+- [YT video tutorial](https://www.youtube.com/watch?v=kZ3OL3AN_IA&t=157s)
+- [Blog tutorial](https://daminion.net/docs/how-to-get-google-cloud-vision-api-key/)
+
