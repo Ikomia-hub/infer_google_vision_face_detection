@@ -108,7 +108,21 @@ for output in algo.get_outputs():
 
 ## :fast_forward: Advanced usage 
 
-#### How to generate a Google Cloud Vision API Key?
+ ### :bulb: How to generate a Google Cloud Vision API Key?
 - [YT video tutorial](https://www.youtube.com/watch?v=kZ3OL3AN_IA&t=157s)
 - [Blog tutorial](https://daminion.net/docs/how-to-get-google-cloud-vision-api-key/)
+
+
+### :key: Set the Google Cloud Vision API Key in your environment variable. 
+[Permanently setting the API Key in your environment variable](https://medium.com/@kapilgorve/set-environment-variable-in-windows-and-wsl-linux-in-terminal-c5e11138e807) enables the use of this algorithm without having to define the 'google_application_credentials' parameter every time.
+
+
+*Note: the key will be require for deployments.*
+
+
+
+###  :red_circle: Deployment Limitations
+This algorithm necessitates authentication to Google Cloud services via API keys. Consequently, it will not operate offline (e.g., in AWS Lambda) or in environments without internet access to communicate with Google Cloud services.
+
+Ensure to manage API keys securely and avoid exposing them in public repositories or forums to prevent unauthorized usage. If the keys are compromised, be sure to revoke them immediately and generate new keys in the Google Cloud Console.
 
