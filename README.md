@@ -22,7 +22,12 @@
 
 Face detection using Google cloud vision API. 
 
-**A Google Cloud Vision API Key is required to run this algorithm (see Advanced usage section).**
+**Running this algorithm requires**: 
+- **a Google Cloud Vision API Key**
+- **a Google Cloud account with Cloud Vision API enable**
+
+**Pease refer to the 'Advanced Usage' section for guidance on how to set these up.**
+
 
 ![Face detection landmarks](https://raw.githubusercontent.com/Ikomia-hub/infer_vision_ai_face_detection/main/images/output.jpg)
 
@@ -108,7 +113,7 @@ for output in algo.get_outputs():
 
 ## :fast_forward: Advanced usage 
 
- ### :bulb: How to generate a Google Cloud Vision API Key?
+ ### :bulb: How to generate a Google Cloud Vision API Key and enable Cloud Vision API?
 - [YT video tutorial](https://www.youtube.com/watch?v=kZ3OL3AN_IA&t=157s)
 - [Blog tutorial](https://daminion.net/docs/how-to-get-google-cloud-vision-api-key/)
 
