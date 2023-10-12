@@ -73,7 +73,6 @@ class InferVisionAiFaceDetection(dataprocess.CKeypointDetectionTask):
             "CHIN_RIGHT_GONION": 31, "LEFT_CHEEK_CENTER": 32, 
             "RIGHT_CHEEK_CENTER": 33
         }
-
         self.skeleton = [
             # Eyes
             [self.landmark_dict["LEFT_EYE"], self.landmark_dict["RIGHT_EYE"]],
@@ -98,7 +97,6 @@ class InferVisionAiFaceDetection(dataprocess.CKeypointDetectionTask):
             [self.landmark_dict["CHIN_LEFT_GONION"], self.landmark_dict["CHIN_GNATHION"]],
             [self.landmark_dict["CHIN_RIGHT_GONION"], self.landmark_dict["CHIN_GNATHION"]]
         ]
-
         self.palette = [
             # Eyes
             [255, 102, 102],
@@ -208,24 +206,24 @@ class InferVisionAiFaceDetectionFactory(dataprocess.CTaskFactory):
         dataprocess.CTaskFactory.__init__(self)
         # Set algorithm information/metadata here
         self.info.name = "infer_vision_ai_face_detection"
-        self.info.short_description = "your short description"
-        self.info.description = "your description"
+        self.info.short_description = "Face detection using Google cloud vision API."
+        self.info.description = "Face detection using Google cloud vision API."
         # relative path -> as displayed in Ikomia Studio algorithm tree
         self.info.icon_path = "images/cloud.png"
         self.info.path = "Plugins/Python/Detection"
         self.info.version = "1.0.0"
         # self.info.icon_path = "your path to a specific icon"
-        self.info.authors = "algorithm author"
-        self.info.article = "title of associated research article"
-        self.info.journal = "publication journal"
-        self.info.year = 2021
-        self.info.license = "MIT License"
+        self.info.authors = "Google"
+        self.info.article = ""
+        self.info.journal = ""
+        self.info.year = 2023
+        self.info.license = "Apache License 2.0"
         # URL of documentation
-        self.info.documentation_link = ""
+        self.info.documentation_link = "https://cloud.google.com/vision/docs/detecting-faces"
         # Code source repository
-        self.info.repository = ""
+        self.info.repository = "https://github.com/googleapis/python-vision"
         # Keywords used for search
-        self.info.keywords = "your,keywords,here"
+        self.info.keywords = "Face detection,Google,Cloud,Vision AI"
 
     def create(self, param=None):
         # Create algorithm object
