@@ -160,7 +160,7 @@ class InferVisionAiFaceDetection(dataprocess.CKeypointDetectionTask):
             if face.detection_confidence < param.conf_thres: # skip detections with lower score
                 continue
             # Get box coordinates
-            vertices = [(vertex.x,vertex.y) for vertex in face.fd_bounding_poly.vertices]
+            vertices = [(vertex.x,vertex.y) for vertex in face.bounding_poly.vertices]
             x_box = vertices[0][0]
             y_box = vertices[0][1]
             w = vertices[1][0] - x_box
