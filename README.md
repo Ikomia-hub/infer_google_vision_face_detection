@@ -1,17 +1,17 @@
 <div align="center">
   <img src="images/cloud.png" alt="Algorithm icon">
-  <h1 align="center">infer_vision_ai_face_detection</h1>
+  <h1 align="center">infer_google_vision_face_detection</h1>
 </div>
 <br />
 <p align="center">
-    <a href="https://github.com/Ikomia-hub/infer_vision_ai_face_detection">
-        <img alt="Stars" src="https://img.shields.io/github/stars/Ikomia-hub/infer_vision_ai_face_detection">
+    <a href="https://github.com/Ikomia-hub/infer_google_vision_face_detection">
+        <img alt="Stars" src="https://img.shields.io/github/stars/Ikomia-hub/infer_google_vision_face_detection">
     </a>
     <a href="https://app.ikomia.ai/hub/">
         <img alt="Website" src="https://img.shields.io/website/http/app.ikomia.ai/en.svg?down_color=red&down_message=offline&up_message=online">
     </a>
-    <a href="https://github.com/Ikomia-hub/infer_vision_ai_face_detection/blob/main/LICENSE.md">
-        <img alt="GitHub" src="https://img.shields.io/github/license/Ikomia-hub/infer_vision_ai_face_detection.svg?color=blue">
+    <a href="https://github.com/Ikomia-hub/infer_google_vision_face_detection/blob/main/LICENSE.md">
+        <img alt="GitHub" src="https://img.shields.io/github/license/Ikomia-hub/infer_google_vision_face_detection.svg?color=blue">
     </a>    
     <br>
     <a href="https://discord.com/invite/82Tnw9UGGc">
@@ -29,7 +29,7 @@ Face detection using Google cloud vision API.
 **Pease refer to the 'Advanced Usage' section for guidance on how to set these up.**
 
 
-![Face detection landmarks](https://raw.githubusercontent.com/Ikomia-hub/infer_vision_ai_face_detection/main/images/output.jpg)
+![Face detection landmarks](https://raw.githubusercontent.com/Ikomia-hub/infer_google_vision_face_detection/main/images/output.jpg)
 
 
 ## :rocket: Use with Ikomia API
@@ -53,7 +53,7 @@ from ikomia.dataprocess.workflow import Workflow
 wf = Workflow()
 
 # Add algorithm
-algo = wf.add_task(name="infer_vision_ai_face_detection", auto_connect=True)
+algo = wf.add_task(name="infer_google_vision_face_detection", auto_connect=True)
 
 # Run on your image  
 wf.run_on(url="example_image.png")
@@ -93,7 +93,7 @@ from ikomia.dataprocess.workflow import Workflow
 wf = Workflow()
 
 # Add algorithm
-algo = wf.add_task(name="infer_vision_ai_face_detection", auto_connect=True)
+algo = wf.add_task(name="infer_google_vision_face_detection", auto_connect=True)
 
 # Set parameters
 algo.set_parameters({

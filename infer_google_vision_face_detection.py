@@ -12,10 +12,10 @@ class IkomiaPlugin(dataprocess.CPluginProcessInterface):
 
     def get_process_factory(self):
         # Instantiate algorithm object
-        from infer_vision_ai_face_detection.infer_vision_ai_face_detection_process import InferVisionAiFaceDetectionFactory
-        return InferVisionAiFaceDetectionFactory()
+        from infer_google_vision_face_detection.infer_google_vision_face_detection_process import InferGoogleVisionFaceDetectionFactory
+        return InferGoogleVisionFaceDetectionFactory()
 
     def get_widget_factory(self):
         # Instantiate associated widget object
-        from infer_vision_ai_face_detection.infer_vision_ai_face_detection_widget import InferVisionAiFaceDetectionWidgetFactory
-        return InferVisionAiFaceDetectionWidgetFactory()
+        from infer_google_vision_face_detection.infer_google_vision_face_detection_widget import InferGoogleVisionFaceDetectionWidgetFactory
+        return InferGoogleVisionFaceDetectionWidgetFactory()

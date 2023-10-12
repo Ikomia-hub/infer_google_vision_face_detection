@@ -10,7 +10,7 @@ import cv2
 # - Class to handle the algorithm parameters
 # - Inherits PyCore.CWorkflowTaskParam from Ikomia API
 # --------------------
-class InferVisionAiFaceDetectionParam(core.CWorkflowTaskParam):
+class InferGoogleVisionFaceDetectionParam(core.CWorkflowTaskParam):
 
     def __init__(self):
         core.CWorkflowTaskParam.__init__(self)
@@ -39,7 +39,7 @@ class InferVisionAiFaceDetectionParam(core.CWorkflowTaskParam):
 # - Class which implements the algorithm
 # - Inherits PyCore.CWorkflowTask or derived from Ikomia API
 # --------------------
-class InferVisionAiFaceDetection(dataprocess.CKeypointDetectionTask):
+class InferGoogleVisionFaceDetection(dataprocess.CKeypointDetectionTask):
 
     def __init__(self, name, param):
         dataprocess.CKeypointDetectionTask.__init__(self, name)
@@ -49,7 +49,7 @@ class InferVisionAiFaceDetection(dataprocess.CKeypointDetectionTask):
 
         # Create parameters object
         if param is None:
-            self.set_param_object(InferVisionAiFaceDetectionParam())
+            self.set_param_object(InferGoogleVisionFaceDetectionParam())
         else:
             self.set_param_object(copy.deepcopy(param))
 
@@ -200,12 +200,12 @@ class InferVisionAiFaceDetection(dataprocess.CKeypointDetectionTask):
 # - Factory class to build process object
 # - Inherits PyDataProcess.CTaskFactory from Ikomia API
 # --------------------
-class InferVisionAiFaceDetectionFactory(dataprocess.CTaskFactory):
+class InferGoogleVisionFaceDetectionFactory(dataprocess.CTaskFactory):
 
     def __init__(self):
         dataprocess.CTaskFactory.__init__(self)
         # Set algorithm information/metadata here
-        self.info.name = "infer_vision_ai_face_detection"
+        self.info.name = "infer_google_vision_face_detection"
         self.info.short_description = "Face detection using Google cloud vision API."
         self.info.description = "Face detection using Google cloud vision API."
         # relative path -> as displayed in Ikomia Studio algorithm tree
@@ -227,4 +227,4 @@ class InferVisionAiFaceDetectionFactory(dataprocess.CTaskFactory):
 
     def create(self, param=None):
         # Create algorithm object
-        return InferVisionAiFaceDetection(self.info.name, param)
+        return InferGoogleVisionFaceDetection(self.info.name, param)
