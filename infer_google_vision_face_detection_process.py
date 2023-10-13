@@ -207,7 +207,6 @@ class InferGoogleVisionFaceDetectionFactory(dataprocess.CTaskFactory):
         # Set algorithm information/metadata here
         self.info.name = "infer_google_vision_face_detection"
         self.info.short_description = "Face detection using Google cloud vision API."
-        self.info.description = "Face detection using Google cloud vision API."
         # relative path -> as displayed in Ikomia Studio algorithm tree
         self.info.icon_path = "images/cloud.png"
         self.info.path = "Plugins/Python/Detection"
@@ -224,6 +223,8 @@ class InferGoogleVisionFaceDetectionFactory(dataprocess.CTaskFactory):
         self.info.repository = "https://github.com/googleapis/python-vision"
         # Keywords used for search
         self.info.keywords = "Face detection,Google,Cloud,Vision AI"
+        self.info.algo_type = core.AlgoType.INFER
+        self.info.algo_tasks = "OBJECT_DETECTION"
 
     def create(self, param=None):
         # Create algorithm object
