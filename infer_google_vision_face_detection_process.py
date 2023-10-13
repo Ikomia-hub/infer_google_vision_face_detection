@@ -43,9 +43,9 @@ class InferGoogleVisionFaceDetection(dataprocess.CKeypointDetectionTask):
 
     def __init__(self, name, param):
         dataprocess.CKeypointDetectionTask.__init__(self, name)
+
         # Add input/output of the algorithm here
-        # Example :  self.add_input(dataprocess.CImageIO())
-        #           self.add_output(dataprocess.CImageIO())
+        self.add_output(dataprocess.CTextIO())
 
         # Create parameters object
         if param is None:
@@ -109,7 +109,15 @@ class InferGoogleVisionFaceDetection(dataprocess.CKeypointDetectionTask):
             # Face contour
             [255, 255, 255],[255, 255, 255],[255, 255, 255],[255, 255, 255], [255, 255, 255], [255, 255, 255]
         ]
-
+        self.likelihood_name = (
+            "UNKNOWN",
+            "VERY_UNLIKELY",
+            "UNLIKELY",
+            "POSSIBLE",
+            "LIKELY",
+            "VERY_LIKELY",
+        )
+        self.color = [255, 0, 0]
 
     def get_progress_steps(self):
         # Function returning the number of progress steps for this algorithm
@@ -122,6 +130,9 @@ class InferGoogleVisionFaceDetection(dataprocess.CKeypointDetectionTask):
         # Get input :
         input = self.get_input(0)
         src_image = input.get_image()
+
+        # Add text output
+        text_output = self.get_output(2)
 
         # Get parameters :
         param = self.get_param_object()
@@ -186,9 +197,21 @@ class InferGoogleVisionFaceDetection(dataprocess.CKeypointDetectionTask):
                     keypts.append(
                         (link.end_point_index, dataprocess.CPointF(float(x2), float(y2))))
 
-            # # Display
+            # Display face kpts
             self.add_object(i, 0, face.detection_confidence, float(x_box), float(y_box), w, h, keypts)
 
+            # Display characteristic likelyhood 
+            charact = f"""  anger: {self.likelihood_name[face.anger_likelihood]}
+                            joy: {self.likelihood_name[face.joy_likelihood]}
+                            surprise: {self.likelihood_name[face.surprise_likelihood]}
+                            sorrow: {self.likelihood_name[face.sorrow_likelihood]}
+                            under exposed: {self.likelihood_name[face.under_exposed_likelihood]}
+                            blurred: {self.likelihood_name[face.blurred_likelihood]}
+                            headwear: {self.likelihood_name[face.headwear_likelihood]}"""
+
+            text_output.add_text_field(id=i, label="", text=charact, confidence=face.detection_confidence, box_x=float(x_box), box_y=float(y_box), box_width=w, box_height=h, color=self.color)
+        
+        text_output.set_image(src_image)
         # Step progress bar (Ikomia Studio):
         self.emit_step_progress()
 
