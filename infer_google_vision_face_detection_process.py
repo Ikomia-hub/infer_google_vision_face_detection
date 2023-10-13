@@ -211,7 +211,6 @@ class InferGoogleVisionFaceDetection(dataprocess.CKeypointDetectionTask):
 
             text_output.add_text_field(id=i, label="", text=charact, confidence=face.detection_confidence, box_x=float(x_box), box_y=float(y_box), box_width=w, box_height=h, color=self.color)
         
-        text_output.set_image(src_image)
         # Step progress bar (Ikomia Studio):
         self.emit_step_progress()
 
