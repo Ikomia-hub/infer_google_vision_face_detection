@@ -46,17 +46,14 @@ pip install ikomia
 
 
 ```python
-import ikomia
 from ikomia.dataprocess.workflow import Workflow
+from ikomia.utils.displayIO import display
 
 # Init your workflow
 wf = Workflow()
 
 # Add algorithm
 algo = wf.add_task(name="infer_google_vision_face_detection", auto_connect=True)
-
-# Run on your image  
-wf.run_on(url="example_image.png")
 
 # Set parameters
 algo.set_parameters({
@@ -65,6 +62,9 @@ algo.set_parameters({
 
 # Run on your image
 wf.run_on(url='https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')
+
+# Display your result
+display(algo.get_image_with_graphics())
 ```
 
 ## :sunny: Use with Ikomia Studio
