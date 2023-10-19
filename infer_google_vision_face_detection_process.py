@@ -15,14 +15,12 @@ class InferGoogleVisionFaceDetectionParam(core.CWorkflowTaskParam):
     def __init__(self):
         core.CWorkflowTaskParam.__init__(self)
         # Place default value initialization here
-        # Example : self.window_size = 25
         self.conf_thres = 0.3
         self.google_application_credentials = ''
 
     def set_values(self, params):
         # Set parameters values from Ikomia Studio or API
         # Parameters values are stored as string and accessible like a python dict
-        # Example : self.window_size = int(params["window_size"])
         self.conf_thres = float(params["conf_thres"])
         self.google_application_credentials = str(params["google_application_credentials"])
 
@@ -154,6 +152,7 @@ class InferGoogleVisionFaceDetection(dataprocess.CKeypointDetectionTask):
             self.client = vision.ImageAnnotatorClient()
 
         # Convert the NumPy array to a byte stream
+        src_image = src_image[..., ::-1] # Convert to bgr
         is_success, image_buffer = cv2.imencode(".jpg", src_image)
         byte_stream = io.BytesIO(image_buffer)
 
@@ -202,7 +201,7 @@ class InferGoogleVisionFaceDetection(dataprocess.CKeypointDetectionTask):
             # Display face kpts
             self.add_object(i, 0, face.detection_confidence, float(x_box), float(y_box), w, h, keypts)
 
-            # Display characteristic likelihood 
+            # Display characteristic likelihood
             characteristic_data.append({
                                 'id': i,
                                 'confidence': face.detection_confidence,
