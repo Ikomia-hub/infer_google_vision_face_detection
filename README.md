@@ -26,7 +26,7 @@ Face detection using Google cloud vision API.
 - **a Google Cloud Vision API Key**
 - **a Google Cloud account with Cloud Vision API enable**
 
-**Pease refer to the 'Advanced Usage' section for guidance on how to set these up.**
+**Please refer to the 'Advanced Usage' section for guidance on how to set these up.**
 
 
 ![Face detection landmarks](https://raw.githubusercontent.com/Ikomia-hub/infer_google_vision_face_detection/main/images/output.jpg)
