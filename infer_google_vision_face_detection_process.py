@@ -215,7 +215,7 @@ class InferGoogleVisionFaceDetection(dataprocess.CKeypointDetectionTask):
                                 "headwear": f'{self.likelihood_name[face.headwear_likelihood]}'
                     })
 
-            text_output.data = ({'data': f'{characteristic_data}'})
+            text_output.data = {'data': f'{characteristic_data}'}
 
         # Step progress bar (Ikomia Studio):
         self.emit_step_progress()
