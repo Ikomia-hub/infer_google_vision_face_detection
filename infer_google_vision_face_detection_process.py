@@ -53,6 +53,7 @@ class InferGoogleVisionFaceDetection(dataprocess.CKeypointDetectionTask):
 
         self.client = None
         self.classes = ["face"]
+        self.max_results=  100
         self.landmark_dict = {
             "LEFT_EYE": 0, "RIGHT_EYE": 1, "LEFT_OF_LEFT_EYEBROW": 2, 
             "RIGHT_OF_LEFT_EYEBROW": 3, "LEFT_OF_RIGHT_EYEBROW": 4, 
@@ -163,7 +164,7 @@ class InferGoogleVisionFaceDetection(dataprocess.CKeypointDetectionTask):
         image = vision.Image(content=image_bytes)
 
         # Inference
-        response = self.client.face_detection(image=image)
+        response = self.client.face_detection(image=image, max_results=self.max_results)
         faces = response.face_annotations
 
         characteristic_data = []
