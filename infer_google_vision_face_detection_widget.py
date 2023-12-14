@@ -37,6 +37,14 @@ class InferGoogleVisionFaceDetectionWidget(core.CWorkflowTaskWidget):
             decimals=2
         )
 
+        # Max results
+        self.spin_max_results = pyqtutils.append_spin(
+            self.grid_layout,
+            "Max detection",
+            self.parameters.max_results,
+            min=1,
+        )
+
         # Credentials
         self.browse_credentials = pyqtutils.append_browse_file(
                                             grid_layout=self.grid_layout,
@@ -51,6 +59,7 @@ class InferGoogleVisionFaceDetectionWidget(core.CWorkflowTaskWidget):
     def on_apply(self):
         # Apply button clicked slot
         self.parameters.conf_thres = self.spin_conf_thres.value()
+        self.parameters.max_results = self.spin_max_results.value()
         self.parameters.google_application_credentials = self.browse_credentials.path
 
         # Send signal to launch the algorithm main function

@@ -17,12 +17,15 @@ class InferGoogleVisionFaceDetectionParam(core.CWorkflowTaskParam):
         # Place default value initialization here
         self.conf_thres = 0.3
         self.google_application_credentials = ''
+        self.max_results = 100
 
     def set_values(self, params):
         # Set parameters values from Ikomia Studio or API
         # Parameters values are stored as string and accessible like a python dict
         self.conf_thres = float(params["conf_thres"])
         self.google_application_credentials = str(params["google_application_credentials"])
+        self.max_results = int(params["max_results"])
+
 
     def get_values(self):
         # Send parameters values to Ikomia Studio or API
@@ -30,6 +33,8 @@ class InferGoogleVisionFaceDetectionParam(core.CWorkflowTaskParam):
         params = {}
         params["conf_thres"] = str(self.conf_thres)
         params["google_application_credentials"] = str(self.google_application_credentials)
+        self.max_results = str(params["max_results"])
+
         return params
 
 
@@ -53,7 +58,6 @@ class InferGoogleVisionFaceDetection(dataprocess.CKeypointDetectionTask):
 
         self.client = None
         self.classes = ["face"]
-        self.max_results=  100
         self.landmark_dict = {
             "LEFT_EYE": 0, "RIGHT_EYE": 1, "LEFT_OF_LEFT_EYEBROW": 2, 
             "RIGHT_OF_LEFT_EYEBROW": 3, "LEFT_OF_RIGHT_EYEBROW": 4, 
@@ -164,7 +168,7 @@ class InferGoogleVisionFaceDetection(dataprocess.CKeypointDetectionTask):
         image = vision.Image(content=image_bytes)
 
         # Inference
-        response = self.client.face_detection(image=image, max_results=self.max_results)
+        response = self.client.face_detection(image=image, max_results=param.max_results)
         faces = response.face_annotations
 
         characteristic_data = []
