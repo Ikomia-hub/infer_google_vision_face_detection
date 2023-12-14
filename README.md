@@ -78,6 +78,7 @@ Ikomia Studio offers a friendly UI with the same features as the API.
 ## :pencil: Set algorithm parameters
 
 - **conf_thres** (float) default '0.3': Box threshold for the prediction [0,1]
+- **max_results** (int) default '100': Maximum number of detected faces.
 
 
 
