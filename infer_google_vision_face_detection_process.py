@@ -26,15 +26,14 @@ class InferGoogleVisionFaceDetectionParam(core.CWorkflowTaskParam):
         self.google_application_credentials = str(params["google_application_credentials"])
         self.max_results = int(params["max_results"])
 
-
     def get_values(self):
         # Send parameters values to Ikomia Studio or API
         # Create the specific dict structure (string container)
-        params = {}
-        params["conf_thres"] = str(self.conf_thres)
-        params["google_application_credentials"] = str(self.google_application_credentials)
-        self.max_results = str(params["max_results"])
-
+        params = {
+            "conf_thres": str(self.conf_thres),
+            "google_application_credentials": str(self.google_application_credentials),
+            "max_results": str(self.max_results)
+        }
         return params
 
 
@@ -243,7 +242,7 @@ class InferGoogleVisionFaceDetectionFactory(dataprocess.CTaskFactory):
         # relative path -> as displayed in Ikomia Studio algorithm tree
         self.info.icon_path = "images/cloud.png"
         self.info.path = "Plugins/Python/Detection"
-        self.info.version = "1.0.0"
+        self.info.version = "1.0.1"
         # self.info.icon_path = "your path to a specific icon"
         self.info.authors = "Google"
         self.info.article = ""
